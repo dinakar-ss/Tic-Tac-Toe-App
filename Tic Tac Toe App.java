@@ -1,25 +1,31 @@
 /**
  * TicTacToe
- * UC9 checks whether a player has won by examining
- * rows, columns, and diagonals.
+ * UC10 checks whether the game has ended in a draw
+ * by ensuring no empty cells remain on the board.
  */
 public class TicTacToe {
 
     static char[][] board = new char[3][3];
 
     /**
-     * Entry point of the program. Tests the win-check logic.
+     * Entry point of the program. Tests draw detection logic.
      */
     public static void main(String[] args) {
-        System.out.println(hasWon('X'));
+        System.out.println(isDraw());
     }
 
     /**
-     * Checks all possible winning patterns for the given symbol.
-     * Input: Player symbol
-     * Output: true if win detected.
+     * Traverses the board to check for any remaining empty cells.
+     * Output: true if draw, false otherwise.
      */
-    static boolean hasWon(char symbol) {
-        return false; // placeholder so code compiles
+    static boolean isDraw() {
+        for (int r = 0; r < 3; r++) {
+            for (int c = 0; c < 3; c++) {
+                if (board[r][c] == '\0') { // empty cell check
+                    return false;
+                }
+            }
+        }
+        return true;
     }
 }
